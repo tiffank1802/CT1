@@ -153,6 +153,7 @@ for j in range(0, 11):
 
 # Résolution : U = K^(-1)*F
     U = np.linalg.solve(K, F)
+    np.savetxt("U.txt",U)
 
     Reac = Kreac @ U - Freac
 
@@ -180,4 +181,4 @@ plt.xlabel('L')
 plt.ylabel('G')
 plt.legend()
 plt.grid(True)
-plt.savefig("CT/results/solution.png")
+# plt.savefig("CT/results/solution.png")
