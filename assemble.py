@@ -37,7 +37,7 @@ def assemblage():
     for elm in elements:
 
 
-        coords=nodes[elm]   
+        coords=nodes[elm-1]   
         coords=coords.astype(float)
         Be=calBe(coords)
         Ke=Be.T@C@Be*calDet(coords)/2
@@ -49,6 +49,7 @@ def assemblage():
         ind4=(elm[2]-1)*2+0
         ind5=(elm[2]-1)*2+1
         IndiceGlobal=np.array([ind0,ind1,ind2,ind3,ind4,ind5])
-        # K[IndiceGlobal,IndiceGlobal]= K[IndiceGlobal,IndiceGlobal]+Ke
+        K[np.ix_(IndiceGlobal,IndiceGlobal)]+= Ke # le np.ix_ permet d'affecter bloc à bloc les operations
         # # print(f"{elm}\n\n{coords}\n{i}")
-    return Ke
+    return K
+

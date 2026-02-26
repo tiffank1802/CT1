@@ -5,7 +5,7 @@ def calBe(xy):
     def calDN():
         dN=np.array([
             [-1,1,0],
-            [-1,0,1]]
+            [-1,0,1]],dtype=float
         )
         matrice_a_inverser = xy.T @ dN.T
     
@@ -26,7 +26,6 @@ def calBe(xy):
             # Matrice bien conditionnée, inversion normale
             DN = (np.linalg.inv(matrice_a_inverser)).T @ dN
         return DN
-    
     DN=calDN()
     return  np.array([
             [DN[0,0],0,DN[0,1],0,DN[0,2],0],
